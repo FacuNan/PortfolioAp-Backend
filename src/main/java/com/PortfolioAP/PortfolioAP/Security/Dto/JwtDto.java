@@ -1,28 +1,32 @@
-package com.PortfolioAP.PortfolioAP.security.DTO;
+package com.PortfolioAP.PortfolioAP.Security.Dto;/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
+import org.springframework.security.core.GrantedAuthority;
 
+/**
+ *
+ * @author Usuario
+ */
 public class JwtDto {
-
     private String token;
-    private String bearer= "Bearer";
-
+    private String bearer = "Bearer";
     private String nombreUsuario;
-    private Collection<? extends GrantedAuthority>authorities;
-//constructores
-    public JwtDto() {
-    }
+    private Collection<? extends GrantedAuthority> authorities;
+    
+    //Constructor
 
     public JwtDto(String token, String nombreUsuario, Collection<? extends GrantedAuthority> authorities) {
         this.token = token;
         this.nombreUsuario = nombreUsuario;
         this.authorities = authorities;
     }
-
-    //getters and setters
-
+    
+    //Getters and Setters
 
     public String getToken() {
         return token;
@@ -55,4 +59,5 @@ public class JwtDto {
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
+    
 }

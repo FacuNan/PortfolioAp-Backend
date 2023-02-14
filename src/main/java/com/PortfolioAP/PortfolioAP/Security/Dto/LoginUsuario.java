@@ -1,15 +1,23 @@
-package com.PortfolioAP.PortfolioAP.security.DTO;
+package com.PortfolioAP.PortfolioAP.Security.Dto;/*
+
+
+
+import javax.validation.constraints.NotBlank;
+
+/**
+ *
+ * @author Usuario
+ */
 
 import javax.validation.constraints.NotBlank;
 
 public class LoginUsuario {
     @NotBlank
     private String nombreUsuario;
-
     @NotBlank
     private String password;
-
-    //Getter and Setter
+    
+    //Getter & Setter
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -26,4 +34,5 @@ public class LoginUsuario {
     public void setPassword(String password) {
         this.password = password;
     }
+    
 }

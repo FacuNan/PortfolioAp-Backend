@@ -1,42 +1,57 @@
-package com.PortfolioAP.PortfolioAP.security.Entity;
+package com.PortfolioAP.PortfolioAP.Security.Entity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.FetchType;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int id;
     @NotNull
-
     private String nombre;
     @NotNull
     @Column(unique = true)
-    private String NombreUsuario;
+    private String nombreUsuario;
     @NotNull
-    @Column(unique = true)
     private String email;
     @NotNull
     private String password;
-
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name="usuario_id"), inverseJoinColumns = @JoinColumn(name="rol_id"))
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name ="usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
+    
+    //Constructores
+
     public Usuario() {
     }
 
-    public Usuario( String nombre, String nombreUsuario, String email, String password) {
+    public Usuario(String nombre, String nombreUsuario, String email, String password) {
         this.nombre = nombre;
-        NombreUsuario = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;
+    }
+    
+    //Getter Y Setter
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -48,11 +63,11 @@ public class Usuario {
     }
 
     public String getNombreUsuario() {
-        return NombreUsuario;
+        return nombreUsuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
-        NombreUsuario = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getEmail() {
@@ -71,7 +86,6 @@ public class Usuario {
         this.password = password;
     }
 
-
     public Set<Rol> getRoles() {
         return roles;
     }
@@ -79,6 +93,5 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
-
-
+    
 }
