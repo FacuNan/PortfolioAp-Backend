@@ -4,6 +4,7 @@ import com.PortfolioAP.PortfolioAP.Entity.Persona;
 import com.PortfolioAP.PortfolioAP.Interface.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class PersonaController {
         return ipersonaService.getPersona();
     }
 
+    @PreAuthorize("HasRole('ADMIN')")
     @PostMapping("personas/crear")
     public String createPersona(@RequestBody Persona persona) {
         ipersonaService.savePersona(persona);
