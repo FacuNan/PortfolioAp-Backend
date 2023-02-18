@@ -19,36 +19,37 @@ public class SProyectos implements IProyectosSer {
 
     @Override
     public List<Proyectos> list() {
-        return null;
+        return iproyectoRepostory.findAll();
     }
 
     @Override
     public Optional<Proyectos> getNombreProyecto(String nombreProyecto) {
-        return Optional.empty();
+        return iproyectoRepostory.findByNombreProyecto(nombreProyecto);
     }
 
     @Override
     public Optional<Proyectos> getOne(int id) {
-        return Optional.empty();
+        return iproyectoRepostory.findById(id);
     }
 
     @Override
     public void save(Proyectos proyectos) {
+        iproyectoRepostory.save(proyectos);
 
     }
 
     @Override
     public void delete(int id) {
-
+        iproyectoRepostory.deleteById(id);
     }
 
     @Override
     public boolean exitsByNombre(String nombreProyecto) {
-        return false;
+        return iproyectoRepostory.existsByNombreProyecto(nombreProyecto);
     }
 
     @Override
     public boolean exitsById(int id) {
-        return false;
+        return iproyectoRepostory.existsById(id);
     }
 }

@@ -20,12 +20,7 @@ public class ExperienciaController {
     @Autowired
     SExperiencia Sexperiencia;
 
-    @GetMapping("/lista")
-    public ResponseEntity<List<Experiencia>> list() {
-        List<Experiencia> list = Sexperiencia.list();
-        return new ResponseEntity<>(list, HttpStatus.OK);
 
-    }
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DtoExperiencia dtoExp) {
