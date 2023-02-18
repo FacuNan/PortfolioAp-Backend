@@ -43,7 +43,7 @@ public class ExperienciaController {
 
     }
 
-
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoExperiencia dtoExperiencia) {
         //Se valida si existe el id
 
@@ -66,6 +66,14 @@ public class ExperienciaController {
         Sexperiencia.save(experiencia);
         return new ResponseEntity<>(new Mensaje("La experiencia fue actualizada exitosamente"), HttpStatus.OK);
 
+    }
+
+
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        if (!Sexperiencia.existsById(id))
+            return new ResponseEntity<>(new Mensaje("El id no existe"), HttpStatus.BAD_REQUEST);
+        Sexperiencia.delete(id);
+        return new ResponseEntity<>(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
     }
 
 
