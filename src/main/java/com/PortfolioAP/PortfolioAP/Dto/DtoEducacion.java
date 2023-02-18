@@ -1,28 +1,26 @@
-package com.PortfolioAP.PortfolioAP.Entity;
+package com.PortfolioAP.PortfolioAP.Dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
-@Entity
-public class Educacion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DtoEducacion {
     private int id;
+    @NotBlank
     private String titulo;
+    @NotBlank
     private String institucion;
+    @NotBlank
     private String descripcion;
+    @NotBlank
     private String fechaInicio;
+    @NotBlank
     private String fechaTerminacion;
 
     //constructores
 
-
-    public Educacion() {
+    public DtoEducacion() {
     }
 
-    public Educacion(String titulo, String institucion, String descripcion, String fechaInicio, String fechaTerminacion) {
+    public DtoEducacion(String titulo, String institucion, String descripcion, String fechaInicio, String fechaTerminacion) {
         this.titulo = titulo;
         this.institucion = institucion;
         this.descripcion = descripcion;
@@ -30,8 +28,7 @@ public class Educacion {
         this.fechaTerminacion = fechaTerminacion;
     }
 
-
-    //Getters and Setters
+    //getters and Setters
 
 
     public String getTitulo() {
@@ -72,13 +69,5 @@ public class Educacion {
 
     public void setFechaTerminacion(String fechaTerminacion) {
         this.fechaTerminacion = fechaTerminacion;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
