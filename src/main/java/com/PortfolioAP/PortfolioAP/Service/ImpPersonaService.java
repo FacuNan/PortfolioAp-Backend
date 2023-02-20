@@ -22,7 +22,7 @@ public class ImpPersonaService implements IPersonaService {
     }
 
     @Override
-    public Optional<Persona> getOne(Long id) {
+    public Optional<Persona> getOne(long id) {
         return ipersonarepository.findById(id);
     }
 

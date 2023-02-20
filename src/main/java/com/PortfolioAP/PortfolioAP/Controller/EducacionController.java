@@ -26,6 +26,14 @@ public class EducacionController {
         return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 
+    @GetMapping("detail/{id}")
+    public ResponseEntity<Educacion> detail(int id) {
+        if (!Seducacion.exitsById(id))
+            return new ResponseEntity(new Mensaje("La educacion no existe"), HttpStatus.BAD_REQUEST);
+        Educacion educacion = Seducacion.getOne(id).get();
+        return new ResponseEntity(educacion, HttpStatus.OK);
+    }
+
     //Metodo para crear una educacion
 
     @PostMapping("/create")
@@ -34,7 +42,7 @@ public class EducacionController {
             return new ResponseEntity<>(new Mensaje("El campo titulo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         Educacion educacion = new Educacion(dtoEdu.getTitulo(), dtoEdu.getInstitucion(), dtoEdu.getDescripcion(), dtoEdu.getFechaInicio(), dtoEdu.getFechaTerminacion());
 
-        if(Seducacion.exitsByNombreEdu(dtoEdu.getTitulo()))
+        if (Seducacion.exitsByNombreEdu(dtoEdu.getTitulo()))
             return new ResponseEntity<>(new Mensaje("Esa Educacion ya existe"), HttpStatus.BAD_REQUEST);
         Seducacion.save(educacion);
         return new ResponseEntity<>(new Mensaje("Educacion creada correctamente"), HttpStatus.OK);
@@ -70,8 +78,9 @@ public class EducacionController {
 
     }
 
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
-        if(!Seducacion.exitsById(id))
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        if (!Seducacion.exitsById(id))
             return new ResponseEntity<>(new Mensaje("El id no existe"), HttpStatus.BAD_REQUEST);
 
         Seducacion.delete(id);

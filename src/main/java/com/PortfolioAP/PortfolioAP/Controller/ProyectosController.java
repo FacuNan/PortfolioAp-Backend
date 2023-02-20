@@ -25,6 +25,16 @@ public class ProyectosController {
         return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 
+    @GetMapping("detail/{id}")
+    public ResponseEntity<Proyectos> detail(int id) {
+        if (!sProyectos.exitsById(id))
+            return new ResponseEntity(new Mensaje("El proyecto no existe"), HttpStatus.BAD_REQUEST);
+
+        Proyectos proyectos = sProyectos.getOne(id).get();
+        return new ResponseEntity(proyectos, HttpStatus.OK);
+    }
+
+
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DtoProyectos dtoProyectos) {
         if (StringUtils.isBlank(dtoProyectos.getNombreProyecto()))
@@ -64,6 +74,7 @@ public class ProyectosController {
         return new ResponseEntity<>(new Mensaje("El proyecto fue actualizado correctamente"), HttpStatus.OK);
     }
 
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!sProyectos.exitsById(id))
             return new ResponseEntity<>(new Mensaje("El id no existe"), HttpStatus.BAD_REQUEST);
