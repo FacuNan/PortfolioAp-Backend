@@ -20,6 +20,20 @@ public class Persona {
     private String apellido;
 
     @NotNull
+    @Size(min = 1, max = 500, message = "No cumple con la longitud")
+    private String biografia;
+
+    public Persona() {
+    }
+
+    public Persona(String nombre, String apellido, String biografia, String img) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.biografia = biografia;
+        this.img = img;
+    }
+
+    @NotNull
     private String img;
 
     public long getId() {
@@ -52,5 +66,13 @@ public class Persona {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
     }
 }

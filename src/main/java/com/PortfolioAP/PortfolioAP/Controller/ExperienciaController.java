@@ -38,6 +38,21 @@ public class ExperienciaController {
 
     }
 
+    @GetMapping("detail/{id}")
+    public ResponseEntity<Experiencia>details(int id){
+        if(!Sexperiencia.existsById(id))
+            return new ResponseEntity(new Mensaje("La experiencia no existe"), HttpStatus.BAD_REQUEST);
+
+        Experiencia experiencia = Sexperiencia.getOne(id).get();
+        return new ResponseEntity<>(experiencia, HttpStatus.OK);
+    }
+
+    @GetMapping("/lista")
+    public ResponseEntity<List<Experiencia>>list(){
+        List<Experiencia> lista = Sexperiencia.list();
+        return new ResponseEntity(lista, HttpStatus.OK);
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoExperiencia dtoExperiencia) {
         //Se valida si existe el id
@@ -62,8 +77,7 @@ public class ExperienciaController {
         return new ResponseEntity<>(new Mensaje("La experiencia fue actualizada exitosamente"), HttpStatus.OK);
 
     }
-
-
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!Sexperiencia.existsById(id))
             return new ResponseEntity<>(new Mensaje("El id no existe"), HttpStatus.BAD_REQUEST);

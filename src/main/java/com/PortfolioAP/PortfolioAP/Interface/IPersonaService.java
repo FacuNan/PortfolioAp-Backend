@@ -10,7 +10,7 @@ public interface IPersonaService {
 
     public List<Persona> getPersona();
 
-    public Optional<Persona> getOne(Long id);
+    public Optional<Persona> getOne(long id);
     public void savePersona(Persona persona);
 
     public void deletePersona(Long id);
