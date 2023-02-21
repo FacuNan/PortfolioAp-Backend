@@ -43,8 +43,12 @@ public class Experiencia {
         return nombreE;
     }
 
-    public void setPuesto(String puesto) {
-        this.nombreE=nombreE;
+    public String getNombreE() {
+        return nombreE;
+    }
+
+    public void setNombreE(String nombreE) {
+        this.nombreE = nombreE;
     }
 
     public String getInstitucion() {

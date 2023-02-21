@@ -27,7 +27,7 @@ public class EducacionController {
     }
 
     @GetMapping("detail/{id}")
-    public ResponseEntity<Educacion> detail(int id) {
+    public ResponseEntity<Educacion> detail(@PathVariable("id") int id) {
         if (!Seducacion.exitsById(id))
             return new ResponseEntity(new Mensaje("La educacion no existe"), HttpStatus.BAD_REQUEST);
         Educacion educacion = Seducacion.getOne(id).get();
