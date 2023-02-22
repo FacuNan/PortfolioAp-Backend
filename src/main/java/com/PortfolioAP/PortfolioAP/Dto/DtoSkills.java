@@ -1,49 +1,22 @@
-package com.PortfolioAP.PortfolioAP.Entity;
+package com.PortfolioAP.PortfolioAP.Dto;
 
-import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class DtoSkills {
 
-@Entity
-public class Skills {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String nombre;
     private int porcentaje;
 
     private int radius;
-    
+
     private String colorExterno;
-    
+
     private String colorInterno;
 
-
-    //constructores
-
-
-    public Skills() {
-    }
-
-    public Skills(String nombre, int porcentaje, int radius, String colorExterno, String colorInterno) {
+    public DtoSkills(String nombre, int porcentaje, int radius, String colorExterno, String colorInterno) {
         this.nombre = nombre;
         this.porcentaje = porcentaje;
         this.radius = radius;
         this.colorExterno = colorExterno;
         this.colorInterno = colorInterno;
-    }
-
-    //Geters andSetters
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
