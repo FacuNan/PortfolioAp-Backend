@@ -10,11 +10,11 @@ public interface IPersonaService {
 
     public List<Persona> getPersona();
 
-    public Optional<Persona> getOne(long id);
+    public Optional<Persona> getOne(int id);
     public void savePersona(Persona persona);
 
-    public void deletePersona(Long id);
+    public void deletePersona(int id);
 
-    public Persona findPersona(Long id);
+    public Persona findPersona(int id);
 
 }

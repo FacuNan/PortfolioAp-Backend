@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @NotNull
     @Size(min = 1, max = 50, message = "No cumple con la longitud")
     private String nombre;
@@ -40,7 +40,7 @@ public class Persona {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
