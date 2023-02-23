@@ -25,8 +25,8 @@ public class ProyectosController {
         return new ResponseEntity<>(lista, HttpStatus.OK);
     }
 
-    @GetMapping("detail/{id}")
-    public ResponseEntity<Proyectos> detail(int id) {
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Proyectos> detail(@PathVariable("id") int id) {
         if (!sProyectos.exitsById(id))
             return new ResponseEntity(new Mensaje("El proyecto no existe"), HttpStatus.BAD_REQUEST);
 
@@ -53,12 +53,12 @@ public class ProyectosController {
     }
 
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoProyectos dtoProyectos) {
         if (StringUtils.isBlank(dtoProyectos.getImg()))
             return new ResponseEntity<>(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
 
-        if (!sProyectos.exitsByNombre(dtoProyectos.getNombreProyecto()) && sProyectos.getNombreProyecto(dtoProyectos.getNombreProyecto()).get().getId() != id)
+        if (sProyectos.exitsByNombre(dtoProyectos.getNombreProyecto()) && sProyectos.getNombreProyecto(dtoProyectos.getNombreProyecto()).get().getId() != id)
             return new ResponseEntity<>(new Mensaje("El proyecto ya existe"), HttpStatus.BAD_REQUEST);
 
         if (!sProyectos.exitsById(id))

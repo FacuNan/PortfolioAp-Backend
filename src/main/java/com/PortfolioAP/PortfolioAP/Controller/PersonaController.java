@@ -1,5 +1,6 @@
 package com.PortfolioAP.PortfolioAP.Controller;
 
+import com.PortfolioAP.PortfolioAP.Dto.DtoPersona;
 import com.PortfolioAP.PortfolioAP.Entity.Persona;
 import com.PortfolioAP.PortfolioAP.Interface.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,10 @@ public class PersonaController {
         return ipersonaService.getPersona();
     }
 
-    @GetMapping("detail/{id}")
-    public ResponseEntity<Persona>detail(long id){
-     Persona persona = ipersonaService.getOne(id).get();
-     return new ResponseEntity(persona, HttpStatus.OK);
+    @GetMapping("personas/detail/{id}")
+    public ResponseEntity<Persona> detail(@PathVariable("id") int id) {
+        Persona persona = ipersonaService.getOne(id).get();
+        return new ResponseEntity(persona, HttpStatus.OK);
     }
 
     @PreAuthorize("HasRole('ADMIN')")
@@ -38,24 +39,20 @@ public class PersonaController {
 
     @DeleteMapping("/personas/traer/{id}")
 
-    public String deletePersona(@PathVariable Long id) {
+    public String deletePersona(@PathVariable int id) {
         ipersonaService.deletePersona(id);
         return "La persona se borro exitosamente";
     }
 
-    @PutMapping("personas/editar/{id}")
+    @PutMapping("personas/update/{id}")
 
-    public Persona editPersona(@PathVariable Long id,
-                               @RequestParam("nombre") String nuevoNombre,
-                               @RequestParam("apellido") String nuevoApellido,
-                               @RequestParam("img") String nuevaImg,
-                               @RequestParam("biografia") String nuevaBiografia) {
+    public Persona editPersona(@PathVariable int  id, @RequestBody DtoPersona dtoPersona) {
 
         Persona persona = ipersonaService.findPersona(id);
-        persona.setNombre(nuevoNombre);
-        persona.setApellido(nuevoApellido);
-        persona.setImg(nuevaImg);
-        persona.setBiografia(nuevaBiografia);
+        persona.setNombre(dtoPersona.getNombre());
+        persona.setApellido(dtoPersona.getApellido());
+        persona.setImg(dtoPersona.getImg());
+        persona.setBiografia(dtoPersona.getBiografia());
         ipersonaService.savePersona(persona);
 
         return persona;
@@ -64,7 +61,7 @@ public class PersonaController {
 
     @GetMapping("/personas/traer/perfil")
     public Persona findPersona() {
-        return ipersonaService.findPersona((long) 1);
+        return ipersonaService.findPersona((int) 1);
     }
 
 }
