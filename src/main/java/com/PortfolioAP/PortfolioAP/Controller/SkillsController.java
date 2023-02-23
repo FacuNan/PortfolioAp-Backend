@@ -66,7 +66,7 @@ public class SkillsController {
 
         skills.setNombre(dtoSkills.getNombre());
         skills.setPorcentaje(dtoSkills.getPorcentaje());
-        skills.setRadius(skills.getRadius());
+        skills.setRadius(dtoSkills.getRadius());
         skills.setColorExterno(dtoSkills.getColorExterno());
         skills.setColorInterno(dtoSkills.getColorInterno());
 
