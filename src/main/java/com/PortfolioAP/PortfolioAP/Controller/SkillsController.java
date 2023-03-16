@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("skills")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://portfolioap-ed82a.firebaseapp.com","http://localhost:4200"})
 public class SkillsController {
     @Autowired
     SSkills sSkils;

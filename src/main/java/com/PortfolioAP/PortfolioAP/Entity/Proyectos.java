@@ -13,16 +13,20 @@ public class Proyectos {
     private String nombreProyecto;
     private String img;
     private String descripcion;
+    private String link;
 
     //Constructores
     public Proyectos() {
     }
 
-    public Proyectos(String nombreProyecto, String img, String descripcion) {
+    public Proyectos(String nombreProyecto, String img, String descripcion, String link) {
         this.nombreProyecto = nombreProyecto;
         this.img = img;
         this.descripcion = descripcion;
+        this.link = link;
     }
+    
+    
 
     //Getters and Setters
 
@@ -58,4 +62,14 @@ public class Proyectos {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+    
+    
 }
