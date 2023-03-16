@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("proyectos")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://portfolioap-ed82a.firebaseapp.com","http://localhost:4200"})
 public class ProyectosController {
     @Autowired
     SProyectos sProyectos;
@@ -43,7 +43,7 @@ public class ProyectosController {
         if (sProyectos.exitsByNombre(dtoProyectos.getNombreProyecto()))
             return new ResponseEntity<>(new Mensaje("El nombre del proyecto ya existe"), HttpStatus.BAD_REQUEST);
 
-        Proyectos proyectos = new Proyectos(dtoProyectos.getNombreProyecto(), dtoProyectos.getImg(), dtoProyectos.getDescripcion());
+        Proyectos proyectos = new Proyectos(dtoProyectos.getNombreProyecto(), dtoProyectos.getImg(), dtoProyectos.getDescripcion(), dtoProyectos.getLink());
 
         sProyectos.save(proyectos);
 
@@ -68,6 +68,7 @@ public class ProyectosController {
         proyectos.setNombreProyecto(dtoProyectos.getNombreProyecto());
         proyectos.setImg(dtoProyectos.getImg());
         proyectos.setDescripcion(dtoProyectos.getDescripcion());
+        proyectos.setLink(dtoProyectos.getLink());
 
         sProyectos.save(proyectos);
 
