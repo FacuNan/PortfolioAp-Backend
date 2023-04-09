@@ -46,7 +46,7 @@ public class SkillsController {
         if (sSkils.existsBynombre(dtoSkills.getNombre()))
             return new ResponseEntity(new Mensaje("El Skill ya existe"), HttpStatus.BAD_REQUEST);
 
-        Skills skills = new Skills(dtoSkills.getNombre(), dtoSkills.getPorcentaje(), dtoSkills.getRadius(), dtoSkills.getColorExterno(), dtoSkills.getColorInterno());
+        Skills skills = new Skills(dtoSkills.getNombre(), dtoSkills.getPorcentaje(), dtoSkills.getRadius(), dtoSkills.getColorExterno(), dtoSkills.getColorInterno(),dtoSkills.getImagen());
 
         sSkils.save(skills);
 
@@ -69,6 +69,7 @@ public class SkillsController {
         skills.setRadius(dtoSkills.getRadius());
         skills.setColorExterno(dtoSkills.getColorExterno());
         skills.setColorInterno(dtoSkills.getColorInterno());
+        skills.setImagen(dtoSkills.getImagen());
 
         sSkils.save(skills);
 
