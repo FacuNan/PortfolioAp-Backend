@@ -10,6 +10,7 @@ public class DtoSkills {
     private String colorExterno;
 
     private String colorInterno;
+    private String imagen;
 
     public DtoSkills(String nombre, int porcentaje, int radius, String colorExterno, String colorInterno) {
         this.nombre = nombre;
@@ -58,4 +59,14 @@ public class DtoSkills {
     public void setColorInterno(String colorInterno) {
         this.colorInterno = colorInterno;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
 }

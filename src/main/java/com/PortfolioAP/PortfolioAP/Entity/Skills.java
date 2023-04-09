@@ -19,6 +19,7 @@ public class Skills {
     private String colorExterno;
     
     private String colorInterno;
+    private String imagen;
 
 
     //constructores
@@ -27,12 +28,13 @@ public class Skills {
     public Skills() {
     }
 
-    public Skills(String nombre, int porcentaje, int radius, String colorExterno, String colorInterno) {
+    public Skills(String nombre, int porcentaje, int radius, String colorExterno, String colorInterno, String Imagen) {
         this.nombre = nombre;
         this.porcentaje = porcentaje;
         this.radius = radius;
         this.colorExterno = colorExterno;
         this.colorInterno = colorInterno;
+        this.imagen=imagen;
     }
 
     //Geters andSetters
@@ -85,4 +87,14 @@ public class Skills {
     public void setColorInterno(String colorInterno) {
         this.colorInterno = colorInterno;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
 }
