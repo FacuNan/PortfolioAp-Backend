@@ -77,6 +77,7 @@ public class ExperienciaController {
 
         Experiencia experiencia = Sexperiencia.getOne(id).get();
         experiencia.setNombreE(dtoexp.getNombreE());
+        experiencia.setDescripcion(dtoexp.getDescripcion());
         experiencia.setInstitucion(dtoexp.getInstitucion());
         experiencia.setFechaInicio(dtoexp.getFechaInicio());
         experiencia.setFechaTerminacion(dtoexp.getFechaTerminacion());
